@@ -1,0 +1,42 @@
+
+
+
+<table class="table table-dark table-striped table-hover" >
+    <thead>
+      <tr>
+       
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Contact Number</th>
+        <th scope="col">Address</th>
+        <th scope="col">Education</th>
+        <th scope="col">Email Id</th>
+        <th scope="col">Password</th>
+        <th scope="col">Message</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of viewDetails">
+        
+        <td>{{i?.fname}}</td>
+       
+        <td>{{i?.lname}}</td>
+        <td>{{i?.age}}</td>
+        <td>{{i?.number}}</td>
+        <td>{{i?.address}}</td>
+        <td>{{i?.education}}</td>
+        <td>{{i?.email}}</td>
+        <td>{{i?.password}}</td>
+        <td>{{i?.message}}</td>
+        <!-- <td>{{i?.country}}</td> -->
+        
+        
+       
+       
+      </tr>
+   
+     
+    </tbody>
+  </table>

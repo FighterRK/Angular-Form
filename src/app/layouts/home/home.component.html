@@ -1,0 +1,119 @@
+<h1>Student Detail Entry Form</h1>
+
+<div class="container">
+
+    
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+        <div class="fname">
+            <label for="fname">First name
+            <input class="form-control" type="text" name="fname" placeholder="First Name" formControlName="fname"></label>
+            <div class="error">
+                <span *ngIf="myForm.get('fname')?.invalid && myForm.get('fname')?.touched">This Field is required</span>
+            </div>
+        </div>
+        <div class="lname">
+            <label for="lname">Last name
+            <input class="form-control" type="text" name="lname" placeholder="Last Name" formControlName="lname"></label>
+            <div class="error">
+                <span *ngIf="myForm.get('lname')?.invalid && myForm.get('lname')?.touched">This Field is required</span>
+            </div>
+        </div>
+        <div class="age">
+            <label for="age">Age
+            <input  class="form-control" type="date" name="age"  formControlName="age"></label>
+            <div class="error">
+                <span *ngIf="myForm.get('age')?.invalid && myForm.get('age')?.touched">This Field is required</span>
+            </div>
+        </div>
+        <div class="mobile">
+            <label for="number">Mobile Number
+            <input class="form-control" type="tel" name="mobileNumber"  formControlName="mobileNumber"></label>
+            <div class="error">
+                <span *ngIf="myForm.get('mobileNumber')?.invalid && myForm.get('mobileNumber')?.touched">Enter a valid mobile number</span>
+              </div>
+        </div>
+        <div class="address">
+            <label for="address">Address</label><br>
+            <textarea class="form-control"  name="address"  cols="50" rows="5"  formControlName="address"></textarea>
+            <div class="error">
+                <span *ngIf="myForm.get('address')?.invalid && myForm.get('address')?.touched" >Please Enter Valid Details </span><br>
+                <span  *ngIf="myForm.get('address')?.errors?.['maxlength']">Should Not Exceed 50 Character</span>
+              </div>
+        </div>
+        <div class="education">
+            <label for="edu">Education</label><br>
+            <textarea class="form-control" name="address"  cols="50" rows="5"  formControlName="education"></textarea>
+            <div class="error">
+                <span *ngIf="myForm.get('education')?.invalid && myForm.get('education')?.touched" >This field is required</span>
+
+            </div>
+        </div>
+        <div class="email">
+            <label for="email">Email Id
+            <input class="form-control" type="email" name="email"  formControlName="email"></label>
+            <div class="error">
+                <span *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">Please enter a valid email id</span><br>
+                <span  *ngIf="myForm.get('email')?.errors?.['minlength']">maximum 10</span>
+              </div>
+        </div>
+        <div class="country">
+            <select class="form-control"   name="country" (click)="getCountries()">
+                <option >Select Country</option>
+                <option  *ngFor="let i of getcountryValues" formControlName="country" >{{i?.name}} </option>
+                
+            </select>
+            </div>
+
+
+        <div class="password">
+            <label for="password">Password
+            <input class="form-control" type="password" name="password" formControlName="password"></label>
+            <div class="error">
+                <span *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched">
+                  <ul>
+                    <li>Password should conatin a special character</li>
+                    <li>Should be atleast 8 character long</li>
+                    <li>Should contain a capital letter & a small letter</li>
+                    <li  *ngIf="myForm.get('password')?.errors?.['maxlength']">Should Not Exceed 15 Character</li>
+                  </ul>
+          
+          
+                   </span> 
+              </div>
+
+
+            <br>
+            <label for="confirmPassword">Confirm Password
+            <input  class="form-control" type="password" name="confirmPassword" formControlName="password2"></label>
+
+            <div class="error" *ngIf="myForm.errors?.['missmatch'] && (myForm.controls['password2'].dirty || myForm.controls['password2'].touched)">
+                Password Not Matching
+            </div>
+
+            
+
+        </div>
+        <div class="msg">
+            <label for="message">Your Message</label><br>
+            <textarea  class="form-control" rows="4" cols="50" name="comment" type="text" formControlName="comment">Enter text here...</textarea>
+        </div>
+        <div class="error">
+            <span *ngIf="myForm.get('comment')?.invalid && myForm.get('comment')?.touched">This Field cannot be empty</span>
+            <span *ngIf="myForm.get('comment')?.errors?.['maxlength']">Should not exceed 15 character</span>
+        </div>
+
+        
+
+    
+
+
+
+
+
+        <button type="button" routerLink="view" class="btn btn-warning" (click)="addData(myForm)">Save Details</button>
+    </form>
+
+</div>
+
+
+
